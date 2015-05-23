@@ -1,3 +1,4 @@
-# add linux notifications
+# rename to pymodoro
 # add sound effects
 # implement functionality for user to interact with program
+# make readme a little prettier
