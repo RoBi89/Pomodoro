@@ -2,4 +2,3 @@
 # split program up into multiple parts
 # add sound effects
 # implement functionality for user to interact with program
-# show the end time of pauses and work time
