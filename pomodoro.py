@@ -1,23 +1,19 @@
 #!/usr/bin/python
 
 import time
-from gi.repository import Notify
 
 import endTimes
 import setter
 import variables
-
-
-# These messages are shown at the beginning of each new phase
-workMessage = "Start working! Your Pause begins in {} minutes".format(variables.workDuration)
-shortPauseMessage = "Well done! Have a break. It ends in {} minutes".format(variables.shortPauseDuration)
-longPauseMessage = "Now you deserve a longer break! Take {} minutes to get some rest".format(variables.longPauseDuration)
+import messages
+import notifications
 
 
 # Starts a work phase
 def work():
-    print(workMessage)
+    print(messages.workMessage)
     print(endTimes.workTimeMessage)
+    notifications.workStartNotification.show()
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if variables.shortPauseCounter >= 0 and variables.shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
         shortPause()
@@ -29,8 +25,9 @@ def work():
 
 # Starts a short pause
 def shortPause():
-    print(shortPauseMessage)
+    print(messages.shortPauseMessage)
     print(endTimes.shortPauseTimeMessage)
+    notifications.shortPauseStartNotification.show()
     time.sleep(variables.shortPauseDuration * 60)  # We have to multiply since shortPauseDuration is in minutes, not seconds
     global shortPauseCounter
     variables.shortPauseCounter += 1
@@ -39,8 +36,9 @@ def shortPause():
 
 # Starts a long pause
 def longPause():
-    print(longPauseMessage)
+    print(messages.longPauseMessage)
     print(endTimes.longPauseTimeMessage)
+    notifications.longPauseStartNotification.show()
     time.sleep(variables.longPauseDuration * 60)  # We have to multiply since longPauseDuration is in minutes, not seconds
     setter.resetShortPauseCounter()  # The counter needs to reset in order to start a whole new cycle
     work()
