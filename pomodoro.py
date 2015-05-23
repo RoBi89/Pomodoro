@@ -1,15 +1,23 @@
 #!/usr/bin/python
 
 import time
+from datetime import datetime, timedelta
 
-workDuration = 10
+workDuration = 25
 shortPauseDuration = 5
-longPauseDuration = 8
+longPauseDuration = 20
 shortPauseCounter = 0
 
 
+def calculateEndTimeWork():
+    currentTime = datetime.now().time().replace(microsecond=0)
+    endTime = currentTime + timedelta(minutes=(workDuration))
+    return endTime
+
+
 def startWork():
-    print("Start working! Your Pause begins in %d minutes" % (workDuration))
+    print("Start working! Your Pause begins in {} minutes".format(workDuration))
+    print("Your pause will end at {}".format(calculateEndTimeWork()))
     time.sleep(workDuration * 60)
     if shortPauseCounter <= 2:
         startShortPause()
@@ -20,8 +28,7 @@ def startWork():
 
 
 def startShortPause():
-    print("Well done! Have a break. "
-          "It ends in %d minutes" % (shortPauseDuration))
+    print("Well done! Have a break. It ends in {} minutes".format(shortPauseDuration))
     time.sleep(shortPauseDuration * 60)
     global shortPauseCounter
     shortPauseCounter += 1
@@ -30,7 +37,7 @@ def startShortPause():
 
 def startLongPause():
     print("Now you deserve a longer break! "
-          "Take %d minutes to get some rest" % (longPauseDuration))
+          "Take {} minutes to get some rest".format(longPauseDuration))
     setShortPauseCounter(0)
     time.sleep(longPauseDuration * 60)
     startWork()
