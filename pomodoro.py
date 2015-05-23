@@ -2,11 +2,17 @@
 
 import time
 import datetime
+from gi.repository import Notify
 
 workDuration = 25  # Duration of a work phase, can be changed by the user
 shortPauseDuration = 5  # Duration of a short pause, can be changed by the user
 longPauseDuration = 20  # Duration of a long pause, can be changed by the user
 shortPauseCounter = 0  # Counts how many short pauses have already occured since the last long pause
+
+# These messages are shown at the beginning of each new phase
+workMessage = "Start working! Your Pause begins in {} minutes".format(workDuration)
+shortPauseMessage = "Well done! Have a break. It ends in {} minutes".format(shortPauseDuration)
+longPauseMessage = "Now you deserve a longer break! Take {} minutes to get some rest".format(longPauseDuration)
 
 
 # Calculates the end time of the current work phase
@@ -41,7 +47,6 @@ def calculateEndLongPause():
 
 # Starts a work phase
 def work():
-    print("Start working! Your Pause begins in {} minutes".format(workDuration))
     print("Your work will end at {}".format(calculateEndTimeWork()))
     time.sleep(workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if shortPauseCounter >= 0 and shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
@@ -54,7 +59,7 @@ def work():
 
 # Starts a short pause
 def shortPause():
-    print("Well done! Have a break. It ends in {} minutes".format(shortPauseDuration))
+    print(shortPauseMessage)
     print("Your pause will end at {}".format(calculateEndShortPause()))
     time.sleep(shortPauseDuration * 60)  # We have to multiply since shortPauseDuration is in minutes, not seconds
     global shortPauseCounter
@@ -64,7 +69,7 @@ def shortPause():
 
 # Starts a long pause
 def longPause():
-    print("Now you deserve a longer break! Take {} minutes to get some rest".format(longPauseDuration))
+    print(longPauseMessage)
     print("Your pause will end at {}".format(calculateEndLongPause()))
     time.sleep(longPauseDuration * 60)  # We have to multiply since longPauseDuration is in minutes, not seconds
     resetShortPauseCounter()  # The counter needs to reset in order to start a whole new cycle
