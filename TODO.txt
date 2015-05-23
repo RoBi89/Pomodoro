@@ -1,4 +1,3 @@
 # add linux notifications
-# split program up into multiple parts
 # add sound effects
 # implement functionality for user to interact with program
