@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 import time
-from datetime import datetime, timedelta
+import datetime
 
 workDuration = 25
 shortPauseDuration = 5
@@ -10,14 +10,35 @@ shortPauseCounter = 0
 
 
 def calculateEndTimeWork():
-    currentTime = datetime.now().time().replace(microsecond=0)
-    endTime = currentTime + timedelta(minutes=(workDuration))
-    return endTime
+    now = datetime.datetime.now()
+    delta = datetime.timedelta(minutes=workDuration)
+    t = now.time()
+    combined = ((datetime.datetime.combine(datetime.date(1, 1, 1), t) + delta).time())
+    combinedCut = combined.replace(second=0, microsecond=0)
+    return combinedCut
+
+
+def calculateEndShortPause():
+    now = datetime.datetime.now()
+    delta = datetime.timedelta(minutes=shortPauseDuration)
+    t = now.time()
+    combined = ((datetime.datetime.combine(datetime.date(1, 1, 1), t) + delta).time())
+    combinedCut = combined.replace(second=0, microsecond=0)
+    return combinedCut
+
+
+def calculateEndLongPause():
+    now = datetime.datetime.now()
+    delta = datetime.timedelta(minutes=longPauseDuration)
+    t = now.time()
+    combined = ((datetime.datetime.combine(datetime.date(1, 1, 1), t) + delta).time())
+    combinedCut = combined.replace(second=0, microsecond=0)
+    return combinedCut
 
 
 def startWork():
     print("Start working! Your Pause begins in {} minutes".format(workDuration))
-    print("Your pause will end at {}".format(calculateEndTimeWork()))
+    print("Your work will end at {}".format(calculateEndTimeWork()))
     time.sleep(workDuration * 60)
     if shortPauseCounter <= 2:
         startShortPause()
@@ -29,6 +50,7 @@ def startWork():
 
 def startShortPause():
     print("Well done! Have a break. It ends in {} minutes".format(shortPauseDuration))
+    print("Your pause will end at {}".format(calculateEndShortPause()))
     time.sleep(shortPauseDuration * 60)
     global shortPauseCounter
     shortPauseCounter += 1
@@ -36,8 +58,8 @@ def startShortPause():
 
 
 def startLongPause():
-    print("Now you deserve a longer break! "
-          "Take {} minutes to get some rest".format(longPauseDuration))
+    print("Now you deserve a longer break! Take {} minutes to get some rest".format(longPauseDuration))
+    print("Your pause will end at {}".format(calculateEndLongPause()))
     setShortPauseCounter(0)
     time.sleep(longPauseDuration * 60)
     startWork()
