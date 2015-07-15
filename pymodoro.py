@@ -76,6 +76,7 @@ def evaluate(args):
             print("set_work  -> Sets the duration of working phases")
             print("set_short -> Sets the duration of short pauses")
             print("set_long  -> Sets the duration of long pauses")
+            userInput()
         elif args[0] == "status":  # Shows the variable values
             print("Working phase length : {} minutes".format(variables.workDuration))
             print("Short pause length : {} minutes".format(variables.shortPauseDuration))
