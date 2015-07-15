@@ -1,0 +1,18 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch experimentalSplit
+# Your branch is up-to-date with 'origin/experimentalSplit'.
+# Changes to be committed:
+#
+# 	modified:   __pycache__/endTimes.cpython-34.pyc
+# 	modified:   __pycache__/messages.cpython-34.pyc
+# 	modified:   __pycache__/notifications.cpython-34.pyc
+# 	deleted:    __pycache__/pomodoro.cpython-34.pyc
+# 	modified:   __pycache__/setter.cpython-34.pyc
+# 	modified:   __pycache__/variables.cpython-34.pyc
+# 	modified:   pymodoro.py
+# 	modified:   setter.py
+
+Started implementing user input functionality during execution of the program

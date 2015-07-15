@@ -44,5 +44,48 @@ def longPause():
     work()
 
 
+# This is getting the input from the user and sends it to evaluate() in order to determine what to do with it
+def userInput():
+    x = input("Enter command: ")
+    command = x.split()
+    evaluate(command)
+    return
+
+
+# Evaluates the input given by the user
+def evaluate(args):
+    if len(args) == 1:
+        if args[0] == "s":
+            print("Starting program")
+            work()
+            userInput()
+        elif args[0] == "e":
+            print("Program exiting")
+            exit()
+        elif args[0] == "p":
+            print("Pausing...")
+            wait = input("PRESS ENTER TO CONTINUE.")
+            userInput()
+        elif args[0] == "status":
+            print(variables.workDuration)
+            userInput()
+        else:
+            print("Invalid input, please correct!")
+            userInput()
+    if len(args) == 2:
+        if args[0] == "set_work":
+            setter.setWorkDuration(args[1])
+            userInput()
+        elif args[0] == "set_short":
+            setter.setShortPauseDuration(args[1])
+            userInput()
+        elif args[0] == "set_long":
+            setter.setLongPauseDuration(args[1])
+            userInput()
+        else:
+            print("Invalid input, please correct!")
+            userInput()
+
+
 # Starts the program
-work()
+userInput()

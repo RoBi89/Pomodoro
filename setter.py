@@ -4,6 +4,7 @@ import variables
 
 # The methods here are used to change the variables according to user input and to reset the shortPauseCounter
 
+
 # Sets the duration of a work phase
 def setWorkDuration(x):
     variables.workDuration = x
