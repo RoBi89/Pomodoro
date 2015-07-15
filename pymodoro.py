@@ -14,6 +14,7 @@ def work():
     print(messages.workMessage)
     print(endTimes.workTimeMessage)
     notifications.workStartNotification.show()
+    userInput()
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if variables.shortPauseCounter >= 0 and variables.shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
         shortPause()
@@ -46,6 +47,7 @@ def longPause():
 
 # This is getting the input from the user and sends it to evaluate() in order to determine what to do with it
 def userInput():
+    print("Welcome to PyModoro, type *help* to see the available commands")
     x = input("Enter command: ")
     command = x.split()
     evaluate(command)
@@ -58,14 +60,22 @@ def evaluate(args):
         if args[0] == "s":  # Runs the program normally
             print("Starting program")
             work()
-            userInput()
         elif args[0] == "e":  # Exits the program
             print("Program exiting")
             exit()
         elif args[0] == "p":  # Pauses the program
             print("Pausing...")
-            wait = input("PRESS ENTER TO CONTINUE.")
+            input("PRESS ENTER TO CONTINUE.")
             userInput()
+        elif args[0] == "help":  # Shows the available commands
+            print("The following commands are available:")
+            print("s         -> starts the program")
+            print("e         -> exits the program")
+            print("p         -> pauses the program")
+            print("status    -> Shows the current times for the different phases")
+            print("set_work  -> Sets the duration of working phases")
+            print("set_short -> Sets the duration of short pauses")
+            print("set_long  -> Sets the duration of long pauses")
         elif args[0] == "status":  # Shows the variable values
             print("Working phase length : {} minutes".format(variables.workDuration))
             print("Short pause length : {} minutes".format(variables.shortPauseDuration))
