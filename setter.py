@@ -13,7 +13,7 @@ def setWorkDuration(x):
 
 # Sets the duration of a short pause
 def setShortPauseDuration(x):
-    variables.pauseDuration = x
+    variables.shortPauseDuration = x
     print("Pause duration has been set to {}".format(x))
 
 

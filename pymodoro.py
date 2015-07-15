@@ -54,32 +54,34 @@ def userInput():
 
 # Evaluates the input given by the user
 def evaluate(args):
-    if len(args) == 1:
-        if args[0] == "s":
+    if len(args) == 1:  # If the length is only one, that means that the user is not trying to use one of the setters
+        if args[0] == "s":  # Runs the program normally
             print("Starting program")
             work()
             userInput()
-        elif args[0] == "e":
+        elif args[0] == "e":  # Exits the program
             print("Program exiting")
             exit()
-        elif args[0] == "p":
+        elif args[0] == "p":  # Pauses the program
             print("Pausing...")
             wait = input("PRESS ENTER TO CONTINUE.")
             userInput()
-        elif args[0] == "status":
-            print(variables.workDuration)
+        elif args[0] == "status":  # Shows the variable values
+            print("Working phase length : {} minutes".format(variables.workDuration))
+            print("Short pause length : {} minutes".format(variables.shortPauseDuration))
+            print("Long pause length length : {} minutes".format(variables.longPauseDuration))
             userInput()
         else:
             print("Invalid input, please correct!")
             userInput()
-    if len(args) == 2:
-        if args[0] == "set_work":
+    if len(args) == 2:  # User wants to change the setters (obviously, since that requires both tha command and the value)
+        if args[0] == "set_work":  # Changes the duration of a working phase
             setter.setWorkDuration(args[1])
             userInput()
-        elif args[0] == "set_short":
+        elif args[0] == "set_short":  # Changes the duration of a short pause
             setter.setShortPauseDuration(args[1])
             userInput()
-        elif args[0] == "set_long":
+        elif args[0] == "set_long":  # Changes the duration of a long pause
             setter.setLongPauseDuration(args[1])
             userInput()
         else:
