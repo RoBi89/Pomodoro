@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # These are the global variables used in the program
 workDuration = 25  # Duration of a work phase, can be changed by the user
