@@ -51,7 +51,7 @@ def longPause():
 def userInput():
     print("Welcome to PyModoro, type *help* to see the available commands")
     x = input("Enter command: ")  # Allows user to enter command
-    command = x.split()
+    command = x.split()  # Splits the string entered by the user into multiple words so we can use them for evaluate()
     evaluate(command)  # Evaluates the user command to find out what to do with it
     return
 
