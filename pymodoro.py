@@ -17,9 +17,9 @@ def work():
     userInput()  # Allows the user to enter commands during the ongoing phase
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if variables.shortPauseCounter >= 0 and variables.shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
-        shortPause()
+        shortPause()  # starts a short pause
     elif variables.shortPauseCounter == 3:  # We've had three short pauses, time for a long one
-        longPause()
+        longPause()  # starts a long pause
     else:  # If this ever happens, something is very wrong
         print("ERROR! shortPauseCounter outside of range")
 
@@ -32,8 +32,8 @@ def shortPause():
     userInput()  # Allows the user to enter commands during the ongoing phase
     time.sleep(variables.shortPauseDuration * 60)  # We have to multiply since shortPauseDuration is in minutes, not seconds
     global shortPauseCounter
-    variables.shortPauseCounter += 1
-    work()
+    variables.shortPauseCounter += 1  # we need to increase the counter so we know when to start a long pause instead of a short pause
+    work()  # starts the working phase
 
 
 # Starts a long pause
@@ -50,9 +50,9 @@ def longPause():
 # This is getting the input from the user and sends it to evaluate() in order to determine what to do with it
 def userInput():
     print("Welcome to PyModoro, type *help* to see the available commands")
-    x = input("Enter command: ")
+    x = input("Enter command: ")  # Allows user to enter command
     command = x.split()
-    evaluate(command)
+    evaluate(command)  # Evaluates the user command to find out what to do with it
     return
 
 
@@ -84,7 +84,7 @@ def evaluate(args):
             print("Short pause length : {} minutes".format(variables.shortPauseDuration))
             print("Long pause length length : {} minutes".format(variables.longPauseDuration))
             userInput()
-        else:
+        else:  # User has entered something wrong
             print("Invalid input, please correct!")
             userInput()
     if len(args) == 2:  # User wants to change the setters (obviously, since that requires both tha command and the value)
@@ -97,7 +97,7 @@ def evaluate(args):
         elif args[0] == "set_long":  # Changes the duration of a long pause
             setter.setLongPauseDuration(args[1])
             userInput()
-        else:
+        else:  # User has entered something wrong
             print("Invalid input, please correct!")
             userInput()
 
