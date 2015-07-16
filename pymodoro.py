@@ -11,10 +11,10 @@ import notifications
 
 # Starts a work phase
 def work():
-    print(messages.workMessage())
-    print(endTimes.workTimeMessage())
-    notifications.workStartNotification()
-    userInput()
+    print(messages.workMessage())  # Shows the message telling the user that the work phase has started
+    print(endTimes.workTimeMessage())  # Shows the message telling the user when the current work phase will end
+    notifications.workStartNotification()  # Shows a notification with the same info as in the terminal
+    userInput()  # Allows the user to enter commands during the ongoing phase
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if variables.shortPauseCounter >= 0 and variables.shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
         shortPause()
@@ -26,9 +26,10 @@ def work():
 
 # Starts a short pause
 def shortPause():
-    print(messages.shortPauseMessage())
-    print(endTimes.shortPauseTimeMessage)
-    notifications.shortPauseStartNotification.show()
+    print(messages.shortPauseMessage())  # Shows the message telling the user that the short pause has started
+    print(endTimes.shortPauseTimeMessage)  # Shows the message telling the user when the current short pause will end
+    notifications.shortPauseStartNotification.show()  # Shows a notification with the same info as in the terminal
+    userInput()  # Allows the user to enter commands during the ongoing phase
     time.sleep(variables.shortPauseDuration * 60)  # We have to multiply since shortPauseDuration is in minutes, not seconds
     global shortPauseCounter
     variables.shortPauseCounter += 1
@@ -37,9 +38,10 @@ def shortPause():
 
 # Starts a long pause
 def longPause():
-    print(messages.longPauseMessage())
-    print(endTimes.longPauseTimeMessage)
-    notifications.longPauseStartNotification.show()
+    print(messages.longPauseMessage())  # Shows the message telling the user that the long pause has started
+    print(endTimes.longPauseTimeMessage)  # Shows the message telling the user when the current long pause will end
+    notifications.longPauseStartNotification.show()  # Shows a notification with the same info as in the terminal
+    userInput()  # Allows the user to enter commands during the ongoing phase
     time.sleep(variables.longPauseDuration * 60)  # We have to multiply since longPauseDuration is in minutes, not seconds
     setter.resetShortPauseCounter()  # The counter needs to reset in order to start a whole new cycle
     work()
