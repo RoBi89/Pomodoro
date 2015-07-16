@@ -7,10 +7,12 @@ import setter
 import variables
 import messages
 import notifications
+import sound
 
 
 # Starts a work phase
 def work():
+    sound.startSoundWork()  # Plays a sound to alert the user
     print(messages.workMessage())  # Shows the message telling the user that the work phase has started
     print(endTimes.workTimeMessage())  # Shows the message telling the user when the current work phase will end
     notifications.workStartNotification()  # Shows a notification with the same info as in the terminal
@@ -26,6 +28,7 @@ def work():
 
 # Starts a short pause
 def shortPause():
+    sound.startSoundPause()  # Plays a sound to alert the user
     print(messages.shortPauseMessage())  # Shows the message telling the user that the short pause has started
     print(endTimes.shortPauseTimeMessage)  # Shows the message telling the user when the current short pause will end
     notifications.shortPauseStartNotification.show()  # Shows a notification with the same info as in the terminal
@@ -38,6 +41,7 @@ def shortPause():
 
 # Starts a long pause
 def longPause():
+    sound.startSoundPause()  # Plays a sound to alert the user
     print(messages.longPauseMessage())  # Shows the message telling the user that the long pause has started
     print(endTimes.longPauseTimeMessage)  # Shows the message telling the user when the current long pause will end
     notifications.longPauseStartNotification.show()  # Shows a notification with the same info as in the terminal
@@ -60,10 +64,10 @@ def userInput():
 def evaluate(args):
     if len(args) == 1:  # If the length is only one, that means that the user is not trying to use one of the setters
         if args[0] == "s":  # Runs the program normally
-            print("Starting program")
+            print("Starting program...")
             work()
         elif args[0] == "e":  # Exits the program
-            print("Program exiting")
+            print("Program exiting...")
             exit()
         elif args[0] == "p":  # Pauses the program
             print("Pausing...")

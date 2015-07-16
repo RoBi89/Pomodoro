@@ -1,4 +1,11 @@
 #!/usr/bin/python3
 
+import os
 
-/usr/bin/canberra-gtk-play --id='bell'
+
+def startSoundWork():
+    os.system("/usr/bin/canberra-gtk-play --id='suspend-error'")
+
+
+def startSoundPause():
+    os.system("/usr/bin/canberra-gtk-play --id='complete'")
