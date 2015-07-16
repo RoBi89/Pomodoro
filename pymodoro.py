@@ -11,7 +11,7 @@ import notifications
 
 # Starts a work phase
 def work():
-    print(messages.workMessage)
+    print(messages.workMessage())
     print(endTimes.workTimeMessage)
     notifications.workStartNotification.show()
     userInput()
@@ -26,7 +26,7 @@ def work():
 
 # Starts a short pause
 def shortPause():
-    print(messages.shortPauseMessage)
+    print(messages.shortPauseMessage())
     print(endTimes.shortPauseTimeMessage)
     notifications.shortPauseStartNotification.show()
     time.sleep(variables.shortPauseDuration * 60)  # We have to multiply since shortPauseDuration is in minutes, not seconds
@@ -37,7 +37,7 @@ def shortPause():
 
 # Starts a long pause
 def longPause():
-    print(messages.longPauseMessage)
+    print(messages.longPauseMessage())
     print(endTimes.longPauseTimeMessage)
     notifications.longPauseStartNotification.show()
     time.sleep(variables.longPauseDuration * 60)  # We have to multiply since longPauseDuration is in minutes, not seconds
