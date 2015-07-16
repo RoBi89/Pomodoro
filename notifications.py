@@ -7,8 +7,16 @@ import endTimes
 Notify.init("Hello World")
 
 
-workStartNotification = Notify.Notification.new(messages.workMessage(), (endTimes.workTimeMessage()), "dialog-information")
+def workStartNotification():
+    wsn = Notify.Notification.new(messages.workMessage(), endTimes.workTimeMessage(), "dialog-information")
+    wsn.show()
 
-shortPauseStartNotification = Notify.Notification.new(messages.shortPauseMessage(), (endTimes.shortPauseTimeMessage()), "dialog-information")
 
-longPauseStartNotification = Notify.Notification.new(messages.longPauseMessage(), (endTimes.longPauseTimeMessage()), "dialog-information")
+def shortPauseStartNotification():
+    spsn = Notify.Notification.new(messages.shortPauseMessage(), endTimes.shortPauseTimeMessage(), "dialog-information")
+    spsn.show()
+
+
+def longPauseStartNotification():
+    lpsn = Notify.Notification.new(messages.longPauseMessage(), endTimes.longPauseTimeMessage(), "dialog-information")
+    lpsn.show()

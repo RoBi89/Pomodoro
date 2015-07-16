@@ -1,2 +1,3 @@
 # add sound effects
 # make readme a little prettier
+# notifications still have the wrong time

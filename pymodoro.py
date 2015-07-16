@@ -13,7 +13,7 @@ import notifications
 def work():
     print(messages.workMessage())
     print(endTimes.workTimeMessage())
-    notifications.workStartNotification.show()
+    notifications.workStartNotification()
     userInput()
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds
     if variables.shortPauseCounter >= 0 and variables.shortPauseCounter <= 2:  # We've had less than 3 short pauses so far
