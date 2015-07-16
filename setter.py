@@ -7,19 +7,19 @@ import variables
 
 # Sets the duration of a work phase
 def setWorkDuration(x):
-    variables.workDuration = x
+    variables.workDuration = int(x)
     print("Work duration has been set to {}".format(x))
 
 
 # Sets the duration of a short pause
 def setShortPauseDuration(x):
-    variables.shortPauseDuration = x
+    variables.shortPauseDuration = int(x)
     print("Pause duration has been set to {}".format(x))
 
 
 # Sets the duration of a long pause
 def setLongPauseDuration(x):
-    variables.longPauseDuration = x
+    variables.longPauseDuration = int(x)
     print("Long pause duration has been set to {}".format(x))
 
 

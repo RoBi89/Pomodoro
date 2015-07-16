@@ -12,7 +12,7 @@ import notifications
 # Starts a work phase
 def work():
     print(messages.workMessage())
-    print(endTimes.workTimeMessage)
+    print(endTimes.workTimeMessage())
     notifications.workStartNotification.show()
     userInput()
     time.sleep(variables.workDuration * 60)  # We have to multiply since workDuration is in minutes, not seconds

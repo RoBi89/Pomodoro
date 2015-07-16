@@ -35,6 +35,13 @@ def endTimeLongPause():
 
 
 # These Messages are displayed in pomodoro.py
-workTimeMessage = "This work phase will end at {}".format(endTimeWork())
-shortPauseTimeMessage = "Your pause will end at {}".format(endTimeShortPause())
-longPauseTimeMessage = "Your pause will end at {}".format(endTimeLongPause())
+def workTimeMessage():
+    return("This work phase will end at {}".format(endTimeWork()))
+
+
+def shortPauseTimeMessage():
+    return("Your pause will end at {}".format(endTimeShortPause()))
+
+
+def longPauseTimeMessage():
+    return("Your pause will end at {}".format(endTimeLongPause()))
