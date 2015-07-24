@@ -1,1 +1,3 @@
 # make readme a little prettier
+# pressing enter after a pause does not continue the program
+# userInput() stops the running program
